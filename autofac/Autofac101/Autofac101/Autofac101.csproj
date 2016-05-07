@@ -51,8 +51,10 @@
     <Compile Include="App\Bootstrapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ComputeSquares\IComputeSquares.cs" />
-    <Compile Include="Services\ComputeSquares\SquareComputer.cs" />
+    <Compile Include="Services\ComputeFibonacci\FibonacciComputer.cs" />
+    <Compile Include="Services\ComputeFibonacci\FibonacciSequenceComputer.cs" />
+    <Compile Include="Services\ComputeFibonacci\IComputeFibonacci.cs" />
+    <Compile Include="Services\ComputeFibonacci\IComputeFibonacciNumber.cs" />
     <Compile Include="Services\ProvideManners\EnglishMannersProvider.cs" />
     <Compile Include="Services\ProvideManners\FrenchMannersProvider.cs" />
     <Compile Include="Services\ProvideManners\IProvideFarewell.cs" />
