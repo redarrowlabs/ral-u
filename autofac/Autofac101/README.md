@@ -62,3 +62,71 @@ builder.RegisterType<FrenchMannersProvider>()
 	.As<IProvideFarewell>();
 ```
 Try experimenting with adding different registrations for these interfaces.  Can you get your application to speak Spanish?  What happens if multiple types are registered for the same limiter?  Can you figure out how to regiter these services as singletons?
+
+## Modules
+It is always the recommended approach to perform Autofac registrations within an Autofac ```Module```.  A ```Module``` is little more than a collection of registrations, but this provides us some advantages.  If this project were a class library instead of a console application, we could define all of our libraries required registrations in a reusable ```Module``` that some other application could then register with its own ```ContainerBuilder```.  Add a new folder to the project named "Autofac" and add a new class, ```MannersModule```, that extends ```Autofac.Module```.  We'll want to override ```Load``` and copy over all of our registrations from ```Bootstrap``` into our new module.  Our ```ContainerBuilder``` will need to register our new module.
+```csharp
+public class MannersModule : Module
+{
+	protected override void Load(ContainerBuilder builder)
+	{
+
+		builder.RegisterType<Application>();
+
+		builder.RegisterType<EnglishMannersProvider>()
+			.As<IProvideWelcome>();
+		builder.RegisterType<FrenchMannersProvider>()
+			.As<IProvideFarewell>();
+	}
+}
+```
+```csharp
+builder.RegisterModule<MannersModule>();
+```
+That's it!  We now have a reusable module that encapsulates our application behavior.  Let's try some neat tricks we can do with modules.  Add some "configuration" options to ```MannersModule```.
+```csharp
+public enum Language
+{
+	English,
+	French,
+	Spanish
+}
+
+private Language LanguageMode { get; }
+
+public MannersModule(Language lang)
+{
+	LanguageMode = lang;
+}
+
+protected override void Load(ContainerBuilder builder)
+{
+	builder.RegisterType<Application>();
+
+	switch (LanguageMode)
+	{
+		case Language.English:
+		{
+			builder.RegisterType<EnglishMannersProvider>()
+				.AsImplementedInterfaces();
+			break;
+		}
+		case Language.French:
+		{
+			builder.RegisterType<FrenchMannersProvider>()
+				.AsImplementedInterfaces();
+			break;
+		}
+		case Language.Spanish:
+		{
+			builder.RegisterType<SpanishMannersProvider>()
+				.AsImplementedInterfaces();
+			break;
+		}
+	}
+}
+```
+```csharp
+builder.RegisterModule(new MannersModule(MannersModule.Language.English));
+```
+Try running the application with different Language modes set.  It's not hard to see how powerful modules can be.  Our module now exposes a simple configuration option and changes its behavior based on the value of that option.  If someone wanted to use our manners services in their application, they wouldn't need to be concerned with which services to register or how.  They'd only need to configure our module with the clear language options we provided.
