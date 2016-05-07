@@ -22,7 +22,8 @@ namespace Autofac101.App
 
 		public void Run()
 		{
-			
+			WelcomeProvider.Greet();
+			FarewellProvider.Farewell();
 		}
 	}
 }
