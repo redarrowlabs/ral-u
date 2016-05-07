@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Autofac101.Services.ComputeFibonacci
 {
-	public class SquareComputer : IComputeSquares
+	public class FibonacciComputer : IComputeFibonacci
 	{
 		public void Compute()
 		{
