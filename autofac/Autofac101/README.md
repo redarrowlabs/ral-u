@@ -177,16 +177,16 @@ public void Compute()
 ```
 So, what is Autofac going to do with this constructor dependency of type ```int```?  Turns out, there are ways of telling Autofac how to resolve parameters like this, but we won't get into that until a later course.  For now, let's focus on factories.  Change ```Application```'s dependency.
 ```csharp
-private Func<int, IComputeFibonacciSequence> FibonacciSequence { get; }
+private Func<int, IComputeFibonacciSequence> Fibonacci { get; }
 
 public Application(
 			IProvideWelcome welcomeProvider,
 			IProvideFarewell farewellProvider,
-			Func<int, IComputeFibonacciSequence> fibonacciSequence)
+			Func<int, IComputeFibonacciSequence> fibonacci)
 		{
 			WelcomeProvider = welcomeProvider;
 			FarewellProvider = farewellProvider;
-			FibonacciSequence = fibonacciSequence;
+			Fibonacci = fibonacci;
 		}
 ```
 What is this madness, you ask?  Do we need to also register a ```Func<int, IComputeFibonacciSequence>```?  While we could do that, we don't have to.  Autofac will generate a Func for us that, when invoked, given some ```int``` value, resolves an ```IComputeFibonacciSequence``` and uses that ```int``` value for the ```int``` constructor parameter.  But our constructor also has a ```IComputeFibonacciNumber``` parameter and our factory doesn't provide an argument of this type!  How can this work?  Autofac is smart enough to check the container for any registrations that match any constructor parameters not provided by the factory.  Pretty neat, huh?  Let's change our ```Run``` function to be a little cooler.
