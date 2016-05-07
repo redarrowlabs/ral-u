@@ -9,7 +9,7 @@ namespace Autofac101
 		{
 			var app = Bootstrapper.Bootstrap();
 			app.Run();
-			Console.WriteLine("Program completed successfully");
+			Console.WriteLine("Program completed successfully.  Press any key to exit");
 			Console.ReadLine();
 		}
 	}
