@@ -200,3 +200,7 @@ public void Run()
 }
 ```
 This is obviously a very contrived example, but hopefully you can see the value here.  It's not an uncommon need to create something based on some current application state.  This allows us to have more control over when instances are created, provide some stateful information to that instance, and still leverage Autofac dependency injection.
+
+Continue to experiment with your factory to see how different registrations will affect the factory.  Try adding some more constructor parameters.  Maybe register ```IComputeFibonacciSequence``` as a singleton and see what that does to your factory.
+## You did it!
+That wasn't so bad, was it?  You now know the basics of Autofac.  If you want to continue to play around with this sample application, check out the [Autofac documentation](http://autofac.readthedocs.io/en/latest/index.html) to get some ideas or check out the next Autofac course, Autofac110 (coming soon).
