@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autofac101.Services.ProvideManners;
+﻿using Autofac101.Services.ProvideManners;
 
 namespace Autofac101.App
 {

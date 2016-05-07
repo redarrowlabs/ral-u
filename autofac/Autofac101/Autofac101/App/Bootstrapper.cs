@@ -1,6 +1,4 @@
-﻿using Autofac101.Services.ProvideManners;
-
-namespace Autofac101.App
+﻿namespace Autofac101.App
 {
 	public class Bootstrapper
 	{

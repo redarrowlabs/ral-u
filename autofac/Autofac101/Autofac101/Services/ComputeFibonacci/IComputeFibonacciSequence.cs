@@ -1,6 +1,6 @@
 ﻿namespace Autofac101.Services.ComputeFibonacci
 {
-	public interface IComputeFibonacci
+	public interface IComputeFibonacciSequence
 	{
 		void Compute();
 	}

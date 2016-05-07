@@ -3,21 +3,21 @@ using System.Linq;
 
 namespace Autofac101.Services.ComputeFibonacci
 {
-	public class FibonacciComputer : IComputeFibonacci
+	public class FibonacciNumberComputer : IComputeFibonacciNumber
 	{
 		public void Compute()
 		{
 			var count = 10;
 
 			var sequence = Enumerable.Range(0, count)
-				.Select(Fibonacci)
+				.Select(Compute)
 				.ToArray();
 
 			Console.WriteLine($"The first {count} numbers in the Fibonacci sequence are:");
 			Console.WriteLine(string.Join(" ", sequence));
 		}
 
-		public int Fibonacci(int n)
+		public int Compute(int n)
 		{
 			var a = 0;
 			var b = 1;
