@@ -195,7 +195,7 @@ public void Run()
 {
 	WelcomeProvider.Greet();
 	Console.Write("How many Fibonacci numbers would you like to compute? ");
-	FibonacciComputer(Convert.ToInt32(Console.ReadLine())).Compute();
+	Fibonacci(Convert.ToInt32(Console.ReadLine())).Compute();
 	FarewellProvider.Farewell();
 }
 ```
