@@ -60,7 +60,7 @@ builder.RegisterType<EnglishMannersProvider>()
 builder.RegisterType<FrenchMannersProvider>()
 	.As<IProvideFarewell>();
 ```
-Try experimenting with adding different registrations for these interfaces.  Can you get your application to speak Spanish?  What happens if multiple types are registered for the same limiter?  Can you figure out how to regiter these services as singletons?
+Try experimenting with adding different registrations for these interfaces.  Can you get your application to speak Spanish?  What happens if multiple types are registered for the same limiter?  Can you figure out how to register these services as singletons?
 
 > To see further examples of registrations and limiters, check out this [fiddle](https://dotnetfiddle.net/dVqaip).
 
