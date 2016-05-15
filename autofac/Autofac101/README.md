@@ -208,4 +208,4 @@ This is obviously a very contrived example, but hopefully you can see the value 
 
 Continue to experiment with your factory to see how different registrations will affect the factory.  Try adding some more constructor parameters.  Maybe register `IComputeFibonacciSequence` as a singleton and see what that does to your factory.
 ## You did it!
-That wasn't so bad, was it?  You now know the basics of Autofac.  If you want to continue to play around with this sample application, check out the very helpful [Autofac documentation guide](http://autofac.readthedocs.io/en/latest/index.html) to get some ideas or check out the next Autofac course, Autofac110 (coming soon).
+That wasn't so bad, was it?  You now know the basics of Autofac.  If you want to continue to play around with this sample application, check out the very helpful [Autofac documentation guide](http://autofac.readthedocs.io/en/latest/index.html) to get some ideas or check out the next Autofac course, [Autofac110](../Autofac110).
