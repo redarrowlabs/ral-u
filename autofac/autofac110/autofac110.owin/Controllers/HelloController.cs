@@ -6,7 +6,7 @@ namespace autofac110.owin.Controllers
 	{
 		public string Get()
 		{
-			return "Hello World!";
+			return "Hello World!  I'm a hardcoded message!";
 		}
 	}
 }
