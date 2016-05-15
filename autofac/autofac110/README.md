@@ -138,3 +138,15 @@ public ActionResult Index()
 }
 ```
 HttpContextBase is one of many MVC web types that Autofac can grab for us.  You can also hook up Autofac dependency-injection with your Models, Views, and Action Filters.  Autofac has great [documentation](http://autofac.readthedocs.io/en/latest/integration/mvc.html), so I'd suggest checking that out for further info.
+## OWIN
+There will be an entire set of mini-hacks around OWIN, so I don't want to go into too many details regarding best practices.  Just know that what we're about to do is beyond mini-hack - this is a supernasty-hack, but it's good for demostrating how to get Autofac dependency injection working with OWIN middleware.
+
+OWIN applications don't use a `Global.asax` for bootstrap/startup configuration, because OWIN is better.  Instead, we've got a `Startup` class with a bootstrap method, conventionally named `Configuration`.  Let's add what's called "debug middleware" to hook ourselves into the owin pipeline.
+> Note: you typically should NEVER do this.  It's just useful for prototyping or trying stuff out with OWIN.
+
+```csharp
+app.Use(async (context, next) =>
+{
+	await next.Invoke();
+});
+```
